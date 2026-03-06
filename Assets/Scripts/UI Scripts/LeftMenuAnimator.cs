@@ -5,7 +5,6 @@ public class LeftMenuAnimator : MonoBehaviour
 {
     [Header("References (Layers)")]
     [SerializeField] private RectTransform imgBG;
-    [SerializeField] private RectTransform imgPurple;
 
     [Header("Buttons Container (has LayoutGroup inside)")]
     [SerializeField] private RectTransform buttonsRoot;
@@ -21,7 +20,6 @@ public class LeftMenuAnimator : MonoBehaviour
 
     [Header("Timings (seconds)")]
     [SerializeField] private float bgDuration = 0.40f;
-    [SerializeField] private float purpleDuration = 0.25f; // mor daha hızlı
     [SerializeField] private float buttonsDuration = 0.28f;
     [SerializeField] private float layerGap = 0.04f;
 
@@ -90,9 +88,6 @@ public class LeftMenuAnimator : MonoBehaviour
         seq.Append(MoveX(imgBG, openX, bgDuration));
         seq.AppendInterval(layerGap);
 
-        seq.Append(MoveX(imgPurple, openX, purpleDuration));
-        seq.AppendInterval(layerGap);
-
         seq.Append(MoveX(buttonsRoot, openX, buttonsDuration));
     }
 
@@ -108,9 +103,6 @@ public class LeftMenuAnimator : MonoBehaviour
         seq.Append(MoveX(buttonsRoot, closedX, buttonsDuration));
         seq.AppendInterval(layerGap);
 
-        seq.Append(MoveX(imgPurple, closedX, purpleDuration));
-        seq.AppendInterval(layerGap);
-
         seq.Append(MoveX(imgBG, closedX, bgDuration));
     }
 
@@ -119,14 +111,12 @@ public class LeftMenuAnimator : MonoBehaviour
         float closedX = GetClosedX();
 
         if (imgBG != null) imgBG.anchoredPosition = new Vector2(closedX, imgBG.anchoredPosition.y);
-        if (imgPurple != null) imgPurple.anchoredPosition = new Vector2(closedX, imgPurple.anchoredPosition.y);
         if (buttonsRoot != null) buttonsRoot.anchoredPosition = new Vector2(closedX, buttonsRoot.anchoredPosition.y);
     }
 
     private void SnapOpen()
     {
         if (imgBG != null) imgBG.anchoredPosition = new Vector2(openX, imgBG.anchoredPosition.y);
-        if (imgPurple != null) imgPurple.anchoredPosition = new Vector2(openX, imgPurple.anchoredPosition.y);
         if (buttonsRoot != null) buttonsRoot.anchoredPosition = new Vector2(openX, buttonsRoot.anchoredPosition.y);
     }
 
