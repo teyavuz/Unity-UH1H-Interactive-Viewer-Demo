@@ -11,7 +11,7 @@ public class PopupManager : MonoBehaviour
     public GameObject popupPanel;       // Açılıp kapanacak ana panel
     public TextMeshProUGUI titleText;   // Başlık metni
     public TextMeshProUGUI descText;    // Açıklama metni
-    public Image productImage;          // Ürün görseli
+    //public Image productImage;          // Ürün görseli
 
     private void Awake()
     {
@@ -33,21 +33,21 @@ public class PopupManager : MonoBehaviour
     }
 
     // Butonların çağırıp veri göndereceği ana fonksiyon
-    public void ShowPopup(string title, string description, Sprite image)
+    public void ShowPopup(string title, string description/*, Sprite image*/)
     {
         titleText.text = title;
         descText.text = description;
 
         // Eğer butona bir görsel atandıysa göster, atanmadıysa Image'i gizle
-        if (image != null)
-        {
-            productImage.sprite = image;
-            productImage.gameObject.SetActive(true);
-        }
-        else
-        {
-            productImage.gameObject.SetActive(false);
-        }
+        //if (image != null)
+        //{
+            //productImage.sprite = image;
+            //productImage.gameObject.SetActive(true);
+        //}
+        //else
+        //{
+            //productImage.gameObject.SetActive(false);
+        //}
 
         // Verileri doldurduktan sonra paneli görünür yap
         popupPanel.SetActive(true);
