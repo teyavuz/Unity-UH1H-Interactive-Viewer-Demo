@@ -13,6 +13,8 @@ public class PopupManager : MonoBehaviour
     public TextMeshProUGUI descText;    // Açıklama metni
     //public Image productImage;          // Ürün görseli
 
+    private GameManager.GameState previousState; // Popup açılmadan önceki state
+
     private void Awake()
     {
         // Singleton Kurulumu
@@ -35,6 +37,10 @@ public class PopupManager : MonoBehaviour
     // Butonların çağırıp veri göndereceği ana fonksiyon
     public void ShowPopup(string title, string description/*, Sprite image*/)
     {
+        // Önceki state'i sakla ve InspectPopup state'ine geç
+        previousState = GameManager.Instance.CurrentState;
+        GameManager.Instance.SetState(GameManager.GameState.InspectPopup);
+
         titleText.text = title;
         descText.text = description;
 
@@ -57,5 +63,8 @@ public class PopupManager : MonoBehaviour
     public void ClosePopup()
     {
         popupPanel.SetActive(false);
+
+        // Önceki state'e dön
+        GameManager.Instance.SetState(previousState);
     }
 }

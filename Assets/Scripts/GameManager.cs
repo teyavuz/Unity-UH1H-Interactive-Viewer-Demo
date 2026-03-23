@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
         InspectGauge,
         InspectHeadUnit,
         InspectMidUnit,
+        InspectPopup,
     }
     #endregion
 
@@ -91,6 +92,10 @@ public class GameManager : MonoBehaviour
             if (orbitCamera != null)
                 orbitCamera.enabled = true;
             break;
+        case GameState.InspectPopup:
+            if (orbitCamera != null)
+                orbitCamera.enabled = false;
+            break;
         }
     }
 
@@ -101,6 +106,10 @@ public class GameManager : MonoBehaviour
         case GameState.Freelook:
             if (orbitCamera != null)
                 orbitCamera.enabled = false;
+            break;
+        case GameState.InspectPopup:
+            if (orbitCamera != null)
+                orbitCamera.enabled = true;
             break;
         }
     }
